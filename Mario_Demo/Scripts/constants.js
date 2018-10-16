@@ -74,8 +74,8 @@ var constants = {
 	pipeplant_count : 150,
 	pipeplant_v     : 1,
 	invincible      : 11000,
-	invulnerable    : 1000,
-	blinkfactor     : 5,
+	invulnerable    : 5000,
+	blinkfactor     : 6,
 };
 var mushroom_mode = {
 	mushroom : 0,

@@ -108,7 +108,7 @@ var Level = Base.extend({
 		this.items = [];
 		this.coinGauge = new Gauge('coin', 0, 0, 10, 4, true);
 		this.liveGauge = new Gauge('live', 0, 430, 6, 6, true);
-	  this.scoreGauge = new Gauge('score', 0, 100, 10, 4, true); //new
+	  //this.scoreGauge = new Gauge('score', 0, 100, 10, 4, true); //new
 	},
 	reload: function() {
 		var settings = {};
@@ -118,7 +118,7 @@ var Level = Base.extend({
 			if(this.figures[i] instanceof Mario) {
 				settings.lifes = this.figures[i].lifes - 1;
 				settings.coins = this.figures[i].coins;
-			  settings.score = this.figures[i].score; //new
+			  //settings.score = this.figures[i].score; //new
 				break;
 			}
 		}
@@ -134,7 +134,7 @@ var Level = Base.extend({
 				if(this.figures[i] instanceof Mario) {
 					this.figures[i].setLifes(settings.lifes || 0);
 					this.figures[i].setCoins(settings.coins || 0);
-				  this.figures[i].setScore(settings.score || 0); //new
+				  //this.figures[i].setScore(settings.score || 0); //new
 					break;
 				}
 			}
@@ -191,7 +191,7 @@ var Level = Base.extend({
 			if(this.figures[i] instanceof Mario) {
 				settings.lifes = this.figures[i].lifes;
 				settings.coins = this.figures[i].coins;
-			  settings.score = this.figures[i].score; //new
+			  //settings.score = this.figures[i].score; //new
 				settings.state = this.figures[i].state;
 				settings.marioState = this.figures[i].marioState;
 				break;
@@ -205,7 +205,7 @@ var Level = Base.extend({
 			if(this.figures[i] instanceof Mario) {
 				this.figures[i].setLifes(settings.lifes || 0);
 				this.figures[i].setCoins(settings.coins || 0);
-			  this.figures[i].setScore(settings.score || 0); //new
+			  //this.figures[i].setScore(settings.score || 0); //new
 				this.figures[i].setState(settings.state || size_states.small);
 				this.figures[i].setMarioState(settings.marioState || mario_states.normal);
 				break;
@@ -287,7 +287,7 @@ var Level = Base.extend({
 
 		this.coinGauge.playFrame();
 		this.liveGauge.playFrame();
-	  this.scoreGauge.playFrame(); //new
+	  //this.scoreGauge.playFrame(); //new
 	},
 	start: function() {
 		var me = this;
@@ -1074,7 +1074,7 @@ var MushroomBox = Item.extend({
 			this.clearFrames();
 			this.bounce();
 			this.setImage(images.objects, 514, 194);
-		//	this.addscore(100); //new
+			//this.addScore(this.score + 100); //new
 		}
 
 		this._super(from);
@@ -1168,7 +1168,6 @@ var Bullet = Figure.extend({
 		if(!(opponent instanceof Mario)) {
 			opponent.die();
 			this.die();
-			//this.addScore(100); //new
 		}
 	},
 });
@@ -1351,7 +1350,7 @@ var Mario = Hero.extend({
 	},
 	addCoin: function() {
 		this.setCoins(this.coins + 1);
-	//	this.setScore(this.score + 100); //new
+		//this.addScore(this.score + 100); //new
 	},
 	playFrame: function() {
 		if(this.blinking) {
@@ -1488,6 +1487,8 @@ var Enemy = Figure.extend({
 	},
 	hurt: function(from) {
 		this.die();
+		//window.alert("Enemy is dead!"); //new...Works!
+		//this.addScore(); //new
 	},
 	hit: function(opponent) {
 		if(this.invisible)
@@ -1497,7 +1498,6 @@ var Enemy = Figure.extend({
 			if(opponent.vy < 0 && opponent.y - opponent.vy >= this.y + this.state * 32) {
 				opponent.setVelocity(opponent.vx, constants.bounce);
 				this.hurt(opponent);
-				//this.addScore(+100); //new
 			} else {
 				opponent.hurt(this);
 			}
