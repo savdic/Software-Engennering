@@ -52,13 +52,13 @@ var images = {
 };
 var constants = {
 	interval        : 20,
-	bounce          : 15,
+	bounce          : 16,
 	cooldown        : 20,
-	gravity         : 2,
+	gravity         : 2.2,
 	start_lives     : 3,
 	max_width       : 400,
 	max_height      : 15,
-	jumping_v       : 27,
+	jumping_v       : 25,
 	walking_v       : 5,
 	mushroom_v      : 3,
 	ballmonster_v   : 2,
@@ -74,8 +74,8 @@ var constants = {
 	pipeplant_count : 150,
 	pipeplant_v     : 1,
 	invincible      : 11000,
-	invulnerable    : 1000,
-	blinkfactor     : 5,
+	invulnerable    : 5000,
+	blinkfactor     : 6,
 };
 var mushroom_mode = {
 	mushroom : 0,
@@ -86,14 +86,14 @@ var c2u = function(s) {
 };
 var q2q = function(figure, opponent) {
 	if(figure.x > opponent.x + 16)
-		return false;		
+		return false;
 	else if(figure.x + 16 < opponent.x)
-		return false;		
+		return false;
 	else if(figure.y + figure.state * 32 - 4 < opponent.y)
-		return false;		
+		return false;
 	else if(figure.y + 4 > opponent.y + opponent.state * 32)
 		return false;
-		
+
 	return true;
 };
 Math.sign = function(x) {
@@ -101,6 +101,6 @@ Math.sign = function(x) {
 		return 1;
 	else if(x < 0)
 		return -1;
-		
+
 	return 0;
 };
