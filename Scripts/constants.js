@@ -46,7 +46,7 @@ var death_modes = {
 };
 var images = {
 	enemies : BASEPATH + 'mario-enemies.png',
-	sprites : BASEPATH + 'mario-sprites.png',
+	sprites : BASEPATH + 'mario-sprites-ghost.png',
 	objects : BASEPATH + 'mario-objects.png',
 	peach   : BASEPATH + 'mario-peach.png',
 };
